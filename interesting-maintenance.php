@@ -11,7 +11,7 @@
 defined( 'ABSPATH' ) || exit;
 
 if( !class_exists( 'Interesting_Maintenance' ) ){
-	class Interesting_Maintenance {
+	final class Interesting_Maintenance {
 		private static $instance = null;
 		
 		function __construct() {
