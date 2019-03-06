@@ -30,7 +30,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		}
 		
 		function settings_page_content() {
-			
+			require( 'views/int-maint_admin_settings.php' );
 		}
 		
 		/**
