@@ -18,6 +18,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			add_action( 'admin_menu', array( $this, 'admin_menu_item' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 			add_action( 'wp_handle_upload_prefilter', array( $this, 'prefilter_uploaded_files' ) );
+			add_action( 'admin_footer', array( $this, 'help_modal_content' ) );
 		}
 		
 		function admin_menu_item() {
@@ -38,9 +39,13 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		function enqueue_admin_scripts( $hook ) {
 			if( $hook === "toplevel_page_interesting_maintenance_settings" ){
 				wp_enqueue_style( 'int-maint_admin_styles', plugin_dir_url( __FILE__ ) . 'css/int-maint_admin_styles.css' );
+				// media uploader
 				wp_enqueue_script( 'int-maint_uploader', plugin_dir_url( __FILE__ ) . 'js/int-maint_upload.js', array( 'jquery' ) );
-				
 				wp_enqueue_media();
+				
+				// for help modal
+				wp_enqueue_script( 'int-maint_help_modal', plugin_dir_url( __FILE__ ) . 'js/int-maint_help_modal.js', array( 'jquery-ui-core', 'jquery-ui-dialog' ) );
+				wp_enqueue_style( 'wp-jquery-ui-dialog' );
 			}	
 		}
 		
@@ -72,6 +77,10 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			}
 
 			return $file;
+		}
+		
+		function help_modal_content() {
+			require( 'views/int-maint_help_modal.php' );
 		}
 		
 		/**
