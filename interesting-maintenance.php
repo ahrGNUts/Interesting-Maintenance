@@ -16,6 +16,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		
 		function __construct() {
 			add_action( 'admin_menu', array( $this, 'admin_menu_item' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		}
 		
 		function admin_menu_item() {
@@ -33,6 +34,11 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			require( 'views/int-maint_admin_settings.php' );
 		}
 		
+		function enqueue_admin_scripts( $hook ) {
+			if( $hook === "toplevel_page_interesting_maintenance_settings" ){
+				wp_enqueue_style( 'int-maint_admin_styles', plugin_dir_url( __FILE__ ) . 'css/int-maint_admin_styles.css' );
+			}	
+		}
 		/**
 		 * Return class instance.
 		 *
