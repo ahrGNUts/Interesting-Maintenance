@@ -35,8 +35,12 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="logo_path">Logo</label>
 				</th>
 				<td>
+					<div class='image-preview-wrapper'>
+						<img id='image-preview' src='<?php echo wp_get_attachment_url( get_option( 'media_selector_attachment_id' ) ); ?>' height='100'>
+					</div>
 					<input type="text" name="logo_path" id="logo_path" class="regular-text">
 					<input type="button" name="logo_upload_image_button" id="logo_upload_image_button" class="button-secondary upload-button" value="Media Image Library">
+					<input type="hidden" name='image_attachment_id' id='image_attachment_id' value='<?php echo get_option( 'media_selector_attachment_id' ); ?>'>
 					<p class="description">You can upload or select your logo using the Media Image Library, or you can enter its path in the input above.
 				</td>
 			</tr>

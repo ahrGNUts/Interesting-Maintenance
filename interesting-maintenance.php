@@ -17,6 +17,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		function __construct() {
 			add_action( 'admin_menu', array( $this, 'admin_menu_item' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+			add_action( 'wp_handle_upload_prefilter', array( $this, 'prefilter_uploaded_files' ) );
 		}
 		
 		function admin_menu_item() {
@@ -37,8 +38,42 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		function enqueue_admin_scripts( $hook ) {
 			if( $hook === "toplevel_page_interesting_maintenance_settings" ){
 				wp_enqueue_style( 'int-maint_admin_styles', plugin_dir_url( __FILE__ ) . 'css/int-maint_admin_styles.css' );
+				wp_enqueue_script( 'int-maint_uploader', plugin_dir_url( __FILE__ ) . 'js/int-maint_upload.js', array( 'jquery' ) );
+				
+				wp_enqueue_media();
 			}	
 		}
+		
+		/**
+		 * Ensures non-image files can't be uploaded on the settings page.
+		 *
+		 * @return file object
+		 */
+		function prefilter_uploaded_files( $file ) {
+			
+			$settings_page = strpos( $_SERVER['HTTP_REFERER'], '?page=interesting_maintenance') !== false;
+ 
+			if( $settings_page && is_admin() && current_user_can( 'administrator' ) ) {
+			
+				// bmp not in this list because the uploader doesn't seem to allow it anyway
+				$extensions = array(
+					'jpeg',
+					'jpg',
+					'gif',
+					'png'
+				);
+			
+				$ext = pathinfo( $file['name'], PATHINFO_EXTENSION );
+			 
+				if ( !in_array( $ext, $extensions ) ) {
+					$file['error'] = "The uploaded .". $ext ." file is not supported. Please upload an image file.";
+				}
+			
+			}
+
+			return $file;
+		}
+		
 		/**
 		 * Return class instance.
 		 *
