@@ -19,7 +19,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="site_status">Site Status</label>
 				</th>
 				<td>
-					<select name="page_heading">
+					<select name="site_status">
 						<option value="Active">Active</option>
 						<option value="Coming Soon">Coming Soon</option>
 						<option value="Maintenance Mode">Maintenance Mode</option>
