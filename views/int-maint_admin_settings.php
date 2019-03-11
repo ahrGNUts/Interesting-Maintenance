@@ -20,9 +20,9 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 				</th>
 				<td>
 					<select name="site_status">
-						<option value="Active">Active</option>
-						<option value="Coming Soon">Coming Soon</option>
-						<option value="Maintenance Mode">Maintenance Mode</option>
+						<option value="1">Active</option>
+						<option value="2">Coming Soon</option>
+						<option value="3">Maintenance Mode</option>
 					</select>
 					<p class="description">Set the site's current status. When Admin users are logged in, they will see the regular site. If any other visitors come to the site, they will see the "Maintenance Mode" or "Coming Soon" screens.</p>
 				</td>
@@ -46,10 +46,10 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 			</tr>
 			<tr>
 				<th>
-					<label for="heading_message">Message Heading</label>
+					<label for="message_heading">Message Heading</label>
 				</th>
 				<td>
-					<input type="text" name="heading_message" class="regular-text">
+					<input type="text" name="message_heading" class="regular-text">
 					<p class="description">You can enter your own message heading here or leave it blank to display "Coming Soon!" or "Down For Maintenance" depending on the site status.</p>
 				</td>
 			</tr>
