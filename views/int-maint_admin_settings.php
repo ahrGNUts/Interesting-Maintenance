@@ -55,10 +55,10 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 			</tr>
 			<tr>
 				<th>
-					<label for="maintenance_message">Message Body</label>
+					<label for="message_body">Message Body</label>
 				</th>
 				<td>
-					<textarea name="maintenance_message" rows="10" cols="50" maxlength="2500"></textarea>
+					<textarea name="message_body" rows="10" cols="50" maxlength="2500"></textarea>
 				</td>
 			</tr>
 		</table>
