@@ -101,6 +101,24 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<p class="description" id="single_desc">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
 				</td>
 			</tr>
+			<tr class="single_dimensions">
+				<th>
+					<label for="frame_width">Sketch Width</label>
+				</th>
+				<td>
+					<input type="number" name="sketch_width" class="small-text" min="1" max="5000">
+					<p class="description">Sketch width in pixels.</p>
+				</td>
+			</tr>
+			<tr class="single_dimensions">
+				<th>
+					<label for="frame_width">Sketch Height</label>
+				</th>
+				<td>
+					<input type="number" name="sketch_height" class="small-text" min="1" max="5000">
+					<p class="description">Sketch height in pixels.</p>
+				</td>
+			</tr>
 		</table>
 		<button type="submit" name="submit" value="Save Changes" class="button button-primary">Save Changes</button>
 	</form>
