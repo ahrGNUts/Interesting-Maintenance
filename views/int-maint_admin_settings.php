@@ -12,7 +12,8 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 <div class="wrap">
 	<h2>Interesting Maintenance Settings</h2>
 	<form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-		<?php wp_nonce_field( 'process_int-maint_options', '_int-maint_settings_nonce' ); ?>
+		<?php wp_nonce_field( 'process_intmaint_options', '_int-maint_settings_nonce' ); ?>
+		<input type="hidden" name="action" value="process_intmaint_options">
 		<table class="form-table">
 			<tr>
 				<th>
