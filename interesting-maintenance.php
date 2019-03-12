@@ -10,6 +10,8 @@
 */
 defined( 'ABSPATH' ) || exit;
 
+define( 'INTMAINT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 if( !class_exists( 'Interesting_Maintenance' ) ){
 	final class Interesting_Maintenance {
 		private static $instance = null;
@@ -52,20 +54,20 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		
 		function enqueue_admin_scripts( $hook ) {
 			if( $hook === "toplevel_page_interesting_maintenance_settings" ){
-				wp_enqueue_style( 'int-maint_admin_styles', plugin_dir_url( __FILE__ ) . 'css/int-maint_admin_styles.css' );
+				wp_enqueue_style( 'int-maint_admin_styles', INTMAINT_PLUGIN_URL . 'css/int-maint_admin_styles.css' );
 				// media uploader
-				wp_enqueue_script( 'int-maint_uploader', plugin_dir_url( __FILE__ ) . 'js/int-maint_upload.js', array( 'jquery' ) );
+				wp_enqueue_script( 'int-maint_uploader', INTMAINT_PLUGIN_URL . 'js/int-maint_upload.js', array( 'jquery' ) );
 				wp_enqueue_media();
 				
 				// for help modal
-				wp_enqueue_script( 'int-maint_help_modal', plugin_dir_url( __FILE__ ) . 'js/int-maint_help_modal.js', array( 'jquery-ui-core', 'jquery-ui-dialog' ) );
+				wp_enqueue_script( 'int-maint_help_modal', INTMAINT_PLUGIN_URL . 'js/int-maint_help_modal.js', array( 'jquery-ui-core', 'jquery-ui-dialog' ) );
 				wp_enqueue_style( 'wp-jquery-ui-dialog' );
 				
 				// character counter
-				wp_enqueue_script( 'int-maint_char_counter', plugin_dir_url( __FILE__ ) . 'js/int-maint_char_count.js', array( 'jquery' ) );
+				wp_enqueue_script( 'int-maint_char_counter', INTMAINT_PLUGIN_URL . 'js/int-maint_char_count.js', array( 'jquery' ) );
 				
 				// dynamic page behavior
-				wp_enqueue_script( 'int-maint_dynamic_options', plugin_dir_url( __FILE__ ) . 'js/int-maint_dynamic_options.js', array( 'jquery' ) );
+				wp_enqueue_script( 'int-maint_dynamic_options', INTMAINT_PLUGIN_URL . 'js/int-maint_dynamic_options.js', array( 'jquery' ) );
 			}	
 		}
 		
