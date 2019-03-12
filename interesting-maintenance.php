@@ -47,6 +47,9 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 				// for help modal
 				wp_enqueue_script( 'int-maint_help_modal', plugin_dir_url( __FILE__ ) . 'js/int-maint_help_modal.js', array( 'jquery-ui-core', 'jquery-ui-dialog' ) );
 				wp_enqueue_style( 'wp-jquery-ui-dialog' );
+				
+				// character counter
+				wp_enqueue_script( 'int-maint_char_counter', plugin_dir_url( __FILE__ ) . 'js/int-maint_char_count.js', array( 'jquery' ) );
 			}	
 		}
 		

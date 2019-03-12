@@ -78,8 +78,8 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="message_body">Message Body</label>
 				</th>
 				<td>
-					<textarea name="message_body" rows="10" cols="50" maxlength="1200"><?php echo get_option( '_int-maint_message_body' ); ?></textarea>
-					<p class="description"><?php echo get_option( '_int-maint_message_body' ) !== '' ? strlen( get_option( '_int-maint_message_body' ) ) : 0; ?>/1200</p>
+					<textarea name="message_body" id="message_body" rows="10" cols="50" maxlength="1200"><?php echo get_option( '_int-maint_message_body' ); ?></textarea>
+					<p class="description" id="char_string"><span id="char_count"><?php echo get_option( '_int-maint_message_body' ) !== '' ? strlen( get_option( '_int-maint_message_body' ) ) : 0; ?></span>/1200</p>
 				</td>
 			</tr>
 		</table>
