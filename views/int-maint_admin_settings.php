@@ -56,11 +56,11 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 				</th>
 				<td>
 					<div class='image-preview-wrapper'>
-						<img id='image-preview' src='<?php echo wp_get_attachment_url( get_option( 'media_selector_attachment_id' ) ); ?>' height='100'>
+						<img id='image-preview' src='<?php echo wp_get_attachment_url( get_option( '_int-maint_site_logo_id' ) ); ?>' height='100'>
 					</div>
-					<input type="text" name="logo_path" id="logo_path" class="regular-text">
+					<input type="text" name="logo_path" id="logo_path" class="regular-text" value="<?php echo get_option( '_int-maint_site_logo_path' ); ?>">
 					<input type="button" name="logo_upload_image_button" id="logo_upload_image_button" class="button-secondary upload-button" value="Media Image Library">
-					<input type="hidden" name='image_attachment_id' id='image_attachment_id' value='<?php echo get_option( 'media_selector_attachment_id' ); ?>'>
+					<input type="hidden" name='image_attachment_id' id='image_attachment_id' value='<?php echo get_option( '_int-maint_site_logo_id' ); ?>'>
 					<p class="description">You can upload or select your logo using the Media Image Library, or you can enter its path in the input above.
 				</td>
 			</tr>
@@ -69,7 +69,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="message_heading">Message Heading</label>
 				</th>
 				<td>
-					<input type="text" name="message_heading" class="regular-text">
+					<input type="text" name="message_heading" class="regular-text" value="<?php echo get_option( '_int-maint_message_heading' ); ?>">
 					<p class="description">You can enter your own message heading here or leave it blank to display "Coming Soon!" or "Down For Maintenance" depending on the site status.</p>
 				</td>
 			</tr>
@@ -78,7 +78,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="message_body">Message Body</label>
 				</th>
 				<td>
-					<textarea name="message_body" rows="10" cols="50" maxlength="1200"></textarea>
+					<textarea name="message_body" rows="10" cols="50" maxlength="1200"><?php echo get_option( '_int-maint_message_body' ); ?></textarea>
 					<p class="description"><?php echo get_option( '_int-maint_message_body' ) !== '' ? strlen( get_option( '_int-maint_message_body' ) ) : 0; ?>/1200</p>
 				</td>
 			</tr>
@@ -97,8 +97,8 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					</select>
 					<span id="sketch_help" class="dashicons dashicons-editor-help"></span>
 					<br>
-					<input type="number" class="regular-text" id="sketch_id" name="sketch_id" minlength="5">
-					<p class="description">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. Ex: https://openprocessing.org/sketch/<u>19836</u></p>
+					<input type="number" class="regular-text" id="sketch_id" name="sketch_id" minlength="5" value="<?php echo get_option( '_int-maint_sketch_id' ); ?>">
+					<p class="description">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
 				</td>
 			</tr>
 		</table>
