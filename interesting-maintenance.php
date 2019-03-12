@@ -179,7 +179,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		}
 		
 		function only_allow_admin_rest_access( $access ) {
-	        if( !current_user_can( 'administrator' ) {
+	        if( !current_user_can( 'administrator' ) ) {
 	            return new WP_Error( 'admin_only_rest', __( 'Only administrators can access the REST API.', 'int-maint' ), array( 'status' => rest_authorization_required_code() ) );
 	        }
 	
