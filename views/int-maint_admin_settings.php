@@ -106,7 +106,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="sketch_width">Sketch Width</label>
 				</th>
 				<td>
-					<input type="number" name="sketch_width" class="small-text" min="1" max="5000">
+					<input type="number" name="sketch_width" class="small-text" min="1" max="5000" value="<?php echo get_option( '_int-maint_sketch_width' ); ?>">
 					<p class="description">Sketch width in pixels.</p>
 				</td>
 			</tr>
@@ -115,7 +115,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="sketch_height">Sketch Height</label>
 				</th>
 				<td>
-					<input type="number" name="sketch_height" class="small-text" min="1" max="5000">
+					<input type="number" name="sketch_height" class="small-text" min="1" max="5000" value="<?php echo get_option( '_int-maint_sketch_height' ); ?>">
 					<p class="description">Sketch height in pixels.</p>
 				</td>
 			</tr>

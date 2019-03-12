@@ -157,9 +157,26 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 					
 					if( $type === 'static' ){
 						if( isset( $_POST['sketch_id'] ) && is_numeric( $_POST['sketch_id'] ) ){
-							update_option( '_int-maint_sketch_id', $_POST['sketch_id'] );
+							
+							if( $_POST['sketch_width'] > 1 && $_POST['sketch_width'] < 5000 ) {
+								$width = intval( $_POST['sketch_width'] );
+							} else {
+								$width = 650;
+							}
+							
+							if( $_POST['sketch_height'] > 1 && $_POST['sketch_height'] < 5000){
+								$height = intval( $_POST['sketch_height'] );
+							} else {
+								$height = 650;
+							}
+							
+							update_option( '_int-maint_sketch_height', $height );
+							update_option( '_int-maint_sketch_width', $width );
+							update_option( '_int-maint_sketch_id', intval( $_POST['sketch_id'] ) );
 						} else {
 							update_option( '_int-maint_sketch_id', '' );
+							update_option( '_int-maint_sketch_width', 0 );
+							update_option( '_int-maint_sketch_height', 0 );
 						}
 					} else if( $type === 'pop_random' ) {
 						// TODO
