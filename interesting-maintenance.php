@@ -20,6 +20,19 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			add_action( 'wp_handle_upload_prefilter', array( $this, 'prefilter_uploaded_files' ) );
 			add_action( 'admin_footer', array( $this, 'help_modal_content' ) );
 			add_action( 'admin_post_process_intmaint_options', array( $this, 'process_intmaint_options' ) );
+			
+			if( get_option( '_int-maint_site_status' ) != 1 ){
+				if( function_exists( 'bp_is_active' ) ){
+					add_action( 'template_redirect', array( $this, 'render_template' ), 9 );
+				} else {
+					add_action( 'template_redirect', array( $this, 'render_template' ) );
+				}
+			}
+			
+			$current_WP_version = get_bloginfo('version');
+            if ( version_compare( $current_WP_version, '4.7', '>=' ) ) {
+                add_filter( 'rest_authentication_errors', array( &$this, 'only_allow_admin_rest_access' ) );
+            }
 		}
 		
 		function admin_menu_item() {
@@ -158,6 +171,21 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			exit;
 		}
 		
+		function render_template() {
+			if( !current_user_can( 'administrator' ) ){
+				require( 'template/int-maint_template.php' );
+				exit;
+			}
+		}
+		
+		function only_allow_admin_rest_access( $access ) {
+	        if( !current_user_can( 'administrator' ) {
+	            return new WP_Error( 'admin_only_rest', __( 'Only administrators can access the REST API.', 'int-maint' ), array( 'status' => rest_authorization_required_code() ) );
+	        }
+	
+	        return $access;
+    	}
+		
 		/**
 		 * Return class instance.
 		 *
@@ -174,5 +202,4 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	
 	Interesting_Maintenance::get_instance();
 }
-
 	
