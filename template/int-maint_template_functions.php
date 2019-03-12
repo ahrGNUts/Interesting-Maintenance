@@ -40,3 +40,11 @@ function intmaint_echo_styles_scripts() {
 	echo '<link rel="stylesheet" href="' . INTMAINT_PLUGIN_URL . 'template/css/int-maint_styles.css">' . "\n";
 	echo '<script href="' . INTMAINT_PLUGIN_URL . 'template/js/bootstrap.min.js"></script>' . "\n";
 }
+
+function intmaint_get_sketch_height() {
+	echo get_option( '_int-maint_sketch_height' );
+}
+
+function intmaint_get_sketch_width() {
+	echo get_option( '_int-maint_sketch_width' );
+}
