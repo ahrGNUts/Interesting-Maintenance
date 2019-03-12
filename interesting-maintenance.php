@@ -19,6 +19,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 			add_action( 'wp_handle_upload_prefilter', array( $this, 'prefilter_uploaded_files' ) );
 			add_action( 'admin_footer', array( $this, 'help_modal_content' ) );
+			add_action( 'admin_post_process_intmaint_options', array( $this, 'process_intmaint_options' ) );
 		}
 		
 		function admin_menu_item() {
@@ -81,6 +82,74 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		
 		function help_modal_content() {
 			require( 'views/int-maint_help_modal.php' );
+		}
+		
+		function process_intmaint_options() {
+			if( !wp_verify_nonce( $_POST['_int-maint_settings_nonce'], 'process_intmaint_options' ) ){
+				wp_die( 
+					__( 'Invalid nonce.', 'int-maint' ), 
+					__( 'Error', 'int-maint' ), 
+					array(
+						'response' => 403,
+						'back_link' => 'admin.php?page=interesting-maintenance-settings'
+					)
+				);
+			} else {
+				// site status
+				if( isset( $_POST['site_status'] ) ){
+					update_option( '_int-maint_site_status', $_POST['site_status'] );
+				} else {
+					update_option( '_int-maint_site_status', '1' );
+				}
+				
+				// logo
+				if( isset( $_POST['logo_path'] ) && isset( $_POST['image_attachment_id'] ) ){
+					update_option( '_int-maint_site_logo_id', sanitize_text_field( $_POST['image_attachment_id'] ) );
+					update_option( '_int-maint_site_logo_path', sanitize_text_field( $_POST['logo_path'] ) );
+				} else {
+					update_option( '_int-maint_site_logo_id', 0 );
+					update_option( '_int-maint_site_logo_path', '' );
+				}
+				
+				// message heading
+				if( isset( $_POST['message_heading'] ) ){
+					update_option( '_int-maint_message_heading', sanitize_text_field( $_POST['message_heading'] ) );
+				} else {
+					if( $_POST['site_status'] == 2 ){
+						update_option( '_int-maint_message_heading', 'Coming Soon!' );
+					} else {
+						update_option( '_int-maint_message_heading', 'Down For Maintenance' );
+					}
+				}
+				
+				// message body
+				if( isset( $_POST['message_body'] ) ){
+					update_option( '_int-maint_message_body', sanitize_text_field( $_POST['message_body'] ) );
+				} else {
+					update_option( '_int-maint_message_body', '' );
+				}
+				
+				// sketch types
+				if( isset( $_POST['sketch_type'] ) ){
+					$type = $_POST['sketch_type'];
+					update_option( '_int-maint_sketch_type', $type );
+					
+					if( $type === 'static' ){
+						if( isset( $_POST['sketch_id'] ) && is_numeric( $_POST['sketch_id'] ) ){
+							update_option( '_int-maint_sketch_id', $_POST['sketch_id'] );
+						} else {
+							update_option( '_int-maint_sketch_id', '' );
+						}
+					} else if( $type === 'pop_random' ) {
+						// TODO
+					} else if( $type === 'random' ) {
+						// TODO
+					}
+				}
+			}
+			
+			wp_safe_redirect( $_SERVER['HTTP_REFERER'] );
+			exit;
 		}
 		
 		/**
