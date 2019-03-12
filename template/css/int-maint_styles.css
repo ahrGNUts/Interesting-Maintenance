@@ -1,0 +1,10 @@
+/*
+	Coming Soon/Maintenance styles
+	
+	@since 0.5
+	@author Patrick Strube
+*/
+iframe#op_frame {
+	display: block;
+	margin: 0 auto;
+}
