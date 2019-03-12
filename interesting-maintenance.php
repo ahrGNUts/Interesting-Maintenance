@@ -50,6 +50,9 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 				
 				// character counter
 				wp_enqueue_script( 'int-maint_char_counter', plugin_dir_url( __FILE__ ) . 'js/int-maint_char_count.js', array( 'jquery' ) );
+				
+				// dynamic page behavior
+				wp_enqueue_script( 'int-maint_dynamic_options', plugin_dir_url( __FILE__ ) . 'js/int-maint_dynamic_options.js', array( 'jquery' ) );
 			}	
 		}
 		

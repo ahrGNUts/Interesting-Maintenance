@@ -98,7 +98,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<span id="sketch_help" class="dashicons dashicons-editor-help"></span>
 					<br>
 					<input type="number" class="regular-text" id="sketch_id" name="sketch_id" minlength="5" value="<?php echo get_option( '_int-maint_sketch_id' ); ?>">
-					<p class="description">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
+					<p class="description" id="single_desc">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
 				</td>
 			</tr>
 		</table>
