@@ -68,12 +68,15 @@ function intmaint_build_select_options( $type ) {
 }
 
 /*
-	@param div -- string (div name)
-	@return status -- string (hidden or empty)
+	@param group -- string (grouping name)
+	@return status -- string or null
 	
-	Checks if div should be hidden or shown based on currently selected option from select element. 
-	Currently only helps 
+	Checks if grouping element should be hidden or shown based on currently selected option from select element.
+	Currently only works with sketch_type select.
 */
-function intmaint_set_visibility( $div ) {
-	
+function intmaint_set_visibility( $group ) {
+	if( get_option( '_int-maint_sketch_type' ) != $group ){
+		return 'hidden';
+	}
+	return null;
 }
