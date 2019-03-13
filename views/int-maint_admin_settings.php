@@ -91,7 +91,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 				</th>
 				<td>
 					<input type="text" name="seo_title" id="seo_title" class="regular-text" value="<?php echo get_option( '_int-maint_seo_title' ); ?>">
-					<p class="description">Title that will appear in browser tabs and search engines. You can leave this blank for your site's default site title.</p>
+					<p class="description">Title that will appear in browser tabs and search engines. You can leave this blank for your site's current site title.</p>
 				</td>
 			</tr>
 			<tr>
@@ -100,7 +100,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 				</th>
 				<td>
 					<textarea name="seo_desc" id="seo_desc" rows="4" cols="50" class="regular-text"><?php echo get_option( '_int-maint_seo_desc' ); ?></textarea>
-					<p class="description">Site description that will appear in search engines. You can leave this blank for your site's default site description.</p>
+					<p class="description">Site description that will appear in search engines. You can leave this blank for your site's current site description.</p>
 				</td>
 			</tr>
 		</table>
