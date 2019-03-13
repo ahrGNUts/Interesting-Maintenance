@@ -60,7 +60,7 @@ function intmaint_build_select_options( $type ) {
 	}
 	
 	foreach( $options as $option ) {
-		$selected = $current == $option['value'] ? 'selected' : '';// 
+		$selected = $current == $option['value'] ? 'selected' : ''; // is current option selected?
 		$out .= '<option value="' . $option['value'] . '" ' . $selected . '>' . $option['text'] . '</option>';
 	}
 	
