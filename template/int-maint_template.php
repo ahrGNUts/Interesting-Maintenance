@@ -9,7 +9,8 @@ defined( 'ABSPATH' ) || exit;
 require( 'int-maint_template_functions.php' ); ?>
 <html>
 	<head>
-		<title>works</title>
+		<title><?php intmaint_get_seo_data( 'title' ); ?></title>
+		<meta name="description" content="<?php intmaint_get_seo_data( 'desc' );?>">
 		<?php intmaint_echo_styles_scripts(); ?>
 	</head>
 	<body>

@@ -52,3 +52,19 @@ function intmaint_get_sketch_width() {
 function intmaint_get_logo_path() {
 	echo get_option( '_int-maint_site_logo_path' );
 }
+
+/*
+	@param element -- string
+	
+	$element should be either 'title' or 'desc' and will output data accordingly
+*/
+function intmaint_get_seo_data( $element ) {
+	$custom_data = get_option( '_int-maint_seo_' . $element );
+	
+	if( !empty( $custom_data ) ){
+		echo $custom_data;
+	} else {
+		// if $element == title, get current blog name (title) else get current blog description
+		echo get_bloginfo( $element == 'title' ? 'name' : 'description' );	
+	}
+}
