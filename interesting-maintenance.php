@@ -150,6 +150,20 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 					update_option( '_int-maint_message_body', '' );
 				}
 				
+				// site title
+				if( isset( $_POST['seo_title'] ) ){
+					update_option( '_int-maint_seo_title', sanitize_text_field( $_POST['seo_title'] ) );
+				} else {
+					update_option( '_int-maint_seo_title', '' );
+				}
+				
+				// site description
+				if( isset( $_POST['seo_desc'] ) ){
+					update_option( '_int-maint_seo_desc', sanitize_text_field( $_POST['seo_desc'] ) );
+				} else {
+					update_option( '_int-maint_seo_desc', '' );
+				}
+				
 				// sketch types
 				if( isset( $_POST['sketch_type'] ) ){
 					$type = $_POST['sketch_type'];
