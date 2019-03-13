@@ -15,12 +15,12 @@ require( 'int-maint_template_functions.php' ); ?>
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12">
-					<img src="">
-					<h1 class="text-center"><?php intmaint_get_message_heading(); ?></h1>
+				<div class="col-sm-12 d-flex justify-content-center align-items-center mt-2">
+					<img class="mr-3" src="<?php intmaint_get_logo_path(); ?>">
+					<h1><?php intmaint_get_message_heading(); ?></h1>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row mt-2">
 				<div class="col-sm-12">
 					<p class="text-center"><?php intmaint_get_message_body(); ?></p>
 				</div>

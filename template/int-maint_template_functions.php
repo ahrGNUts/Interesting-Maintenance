@@ -48,3 +48,7 @@ function intmaint_get_sketch_height() {
 function intmaint_get_sketch_width() {
 	echo get_option( '_int-maint_sketch_width' );
 }
+
+function intmaint_get_logo_path() {
+	echo get_option( '_int-maint_site_logo_path' );
+}
