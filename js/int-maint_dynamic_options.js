@@ -5,11 +5,11 @@
 jQuery( document ).ready( function( $ ) {
 	$('#sketch_type').on('change', function() {
 		if($(this).val() != 'static'){
-			$('#sketch_id').hide();
-			$('#single_desc').hide();
+			$('.static_fields').hide();
+			$('#multiple_fields').show();
 		} else {
-			$('#sketch_id').show();
-			$('#single_desc').show();
+			$('.static_fields').show();
+			$('#multiple_fields').hide();
 		}
 	});
 });

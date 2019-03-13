@@ -7,3 +7,11 @@
 #sketch_help:hover{
 	cursor: help;
 }
+
+td input.full_cell {
+	width: 100%;
+}
+
+.centered {
+	text-align: center !important;
+}

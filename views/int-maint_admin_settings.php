@@ -97,11 +97,37 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 					</select>
 					<span id="sketch_help" class="dashicons dashicons-editor-help"></span>
 					<br>
-					<input type="number" class="regular-text" id="sketch_id" name="sketch_id" minlength="5" value="<?php echo get_option( '_int-maint_sketch_id' ); ?>">
-					<p class="description" id="single_desc">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
+					<div class="static_fields" <?php echo intmaint_set_visibility( 'static' ); ?>>
+						<input type="number" class="regular-text" id="sketch_id" name="sketch_id" minlength="5" value="<?php echo get_option( '_int-maint_sketch_id' ); ?>">
+						<p class="description" id="single_desc">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
+					</div>
+					<div id="multiple_fields" <?php echo intmaint_set_visibility( 'multiple' ); ?>>
+						<table>
+							<thead>
+								<tr>
+									<th class="centered">Sketch ID</th>
+									<th class="centered">Width</th>
+									<th class="centered">Height</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input type="number" class="full_cell" name="multi_id_1" id="multi_id_1" minlength="5">
+									</td>
+									<td>
+										<input type="number" class="full_cell" name="multi_width_1" id="multi_width_1">
+									</td>
+									<td>
+										<input type="number" class="full_cell" name="multi_height_1" id="multi_height_1">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</td>
 			</tr>
-			<tr class="single_dimensions">
+			<tr class="static_fields" <?php echo intmaint_set_visibility( 'static' ); ?>>
 				<th>
 					<label for="sketch_width">Sketch Width</label>
 				</th>
@@ -110,7 +136,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 					<p class="description">Sketch width in pixels.</p>
 				</td>
 			</tr>
-			<tr class="single_dimensions">
+			<tr class="static_fields" <?php echo intmaint_set_visibility( 'static' ); ?>>
 				<th>
 					<label for="sketch_height">Sketch Height</label>
 				</th>
