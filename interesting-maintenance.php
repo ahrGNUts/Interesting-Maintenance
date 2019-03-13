@@ -193,11 +193,15 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 							update_option( '_int-maint_sketch_width', 0 );
 							update_option( '_int-maint_sketch_height', 0 );
 						}
-					} else if( $type === 'pop_random' ) {
+					} else if( $type == 'multiple' ){
+						// TODO
+					}
+					// TODO: more planning for random sketches
+					/*else if( $type === 'pop_random' ) {
 						// TODO
 					} else if( $type === 'random' ) {
 						// TODO
-					}
+					}*/ 
 				}
 			}
 			

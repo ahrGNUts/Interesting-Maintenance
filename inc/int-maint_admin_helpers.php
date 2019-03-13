@@ -44,14 +44,14 @@ function intmaint_build_select_options( $type ) {
 				'value' => 'multiple',
 				'text' => 'Multiple Sketches'
 			),
-			'pop_random' => array(
+			/*'pop_random' => array( // TODO: more planning for random sketches
 				'value' => 'pop_random',
 				'text' => 'Popular Random Sketch'
 			),
 			'random' => array(
 				'value' => 'random',
 				'text' => 'Completely Random Sketch'
-			)
+			)*/
 		);
 		$current = get_option( '_int-maint_sketch_type' );
 	
