@@ -11,6 +11,7 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'INTMAINT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'INTMAINT_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 
 if( !class_exists( 'Interesting_Maintenance' ) ){
 	final class Interesting_Maintenance {

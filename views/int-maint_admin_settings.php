@@ -7,7 +7,9 @@
 */
 defined( 'ABSPATH' ) || exit; 
 
-if( is_admin() && current_user_can( 'manage_options' ) ): ?>
+if( is_admin() && current_user_can( 'manage_options' ) ): 
+	require( INTMAINT_PLUGIN_ROOT . 'inc/int-maint_admin_helpers.php' ); 
+?>
 
 <div class="wrap">
 	<h2>Interesting Maintenance Settings</h2>
@@ -21,28 +23,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 				</th>
 				<td>
 					<select name="site_status">
-						<?php
-							$statuses = array(
-								'active' => array(
-									'code' => '1',
-									'text' => 'Active'
-								),
-								'coming_soon' => array(
-									'code' => '2',
-									'text' => 'Coming Soon'
-								),
-								'maintenance_mode' => array (
-									'code' => '3',
-									'text' => 'Maintenance Mode'
-								)
-							);
-							
-							foreach( $statuses as $status ){
-								$selected = get_option( '_int-maint_site_status' ) == $status['code'] ? 'selected' : '';
-								
-								echo '<option value="' . $status['code'] . '"' . $selected . '>' . $status['text'] . '</option>';
-							}
-						?>
+						<?php echo intmaint_build_select_options( 'site_status' ); ?>
 					</select>
 					<p class="description">Set the site's current status. When Admin users are logged in, they will see the regular site. If any other visitors come to the site, they will see the "Maintenance Mode" or "Coming Soon" screens.</p>
 				</td>
@@ -112,9 +93,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 				</th>
 				<td>
 					<select name="sketch_type" id="sketch_type">
-						<option value="static">Static Sketch</option>
-						<option value="pop_random">Popular Random Sketch</option>
-						<option value="random">Completely Random Sketch</option>
+						<?php echo intmaint_build_select_options( 'sketch_type' ); ?>
 					</select>
 					<span id="sketch_help" class="dashicons dashicons-editor-help"></span>
 					<br>
