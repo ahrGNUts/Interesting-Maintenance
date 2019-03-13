@@ -99,7 +99,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ): ?>
 					<label for="seo_desc">SEO Description</label>
 				</th>
 				<td>
-					<textarea name="seo_desc" id="seo_desc" rows="4" cols="50" class="regular-text" value="<?php echo get_option( '_int-maint_seo_desc' ); ?>"></textarea>
+					<textarea name="seo_desc" id="seo_desc" rows="4" cols="50" class="regular-text"><?php echo get_option( '_int-maint_seo_desc' ); ?></textarea>
 					<p class="description">Site description that will appear in search engines. You can leave this blank for your site's default site description.</p>
 				</td>
 			</tr>
