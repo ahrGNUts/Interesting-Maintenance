@@ -97,10 +97,6 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 					</select>
 					<span id="sketch_help" class="dashicons dashicons-editor-help"></span>
 					<br>
-					<div class="static_fields" <?php echo intmaint_set_visibility( 'static' ); ?>>
-						<input type="number" class="regular-text" id="sketch_id" name="sketch_id" minlength="5" value="<?php echo get_option( '_int-maint_sketch_id' ); ?>">
-						<p class="description" id="single_desc">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
-					</div>
 					<div id="multiple_fields" <?php echo intmaint_set_visibility( 'multiple' ); ?>>
 						<table>
 							<thead>
@@ -125,6 +121,15 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 							</tbody>
 						</table>
 					</div>
+				</td>
+			</tr>
+			<tr class="static_fields" <?php echo intmaint_set_visibility( 'static' ); ?>>
+				<th>
+					<label for="sketch_id">Sketch ID</label>
+				</th>
+				<td>
+					<input type="number" class="regular-text" id="sketch_id" name="sketch_id" minlength="5" value="<?php echo get_option( '_int-maint_sketch_id' ); ?>">
+					<p class="description" id="single_desc">Enter the ID of the sketch you want to appear on your Coming Soon/Maintenance page. The ID is the number after /sketch/ in the OpenProcessing URL. <br>Ex: https://openprocessing.org/sketch/<u>19836</u></p>
 				</td>
 			</tr>
 			<tr class="static_fields" <?php echo intmaint_set_visibility( 'static' ); ?>>
