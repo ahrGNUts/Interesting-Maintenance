@@ -28,7 +28,19 @@ function intmaint_build_sketch_url() {
 }
 
 function intmaint_get_message_heading() {
-	echo get_option( '_int-maint_message_heading' );
+	$message = get_option( '_int-maint_message_heading' );
+	
+	if( empty( $message ) ){
+		$status = (int)get_option( '_int-maint_site_status' );
+		
+		if( $status == 2 ) {
+			echo 'Coming Soon!';
+		} else {
+			echo 'Maintenance Mode';
+		}
+	} else {
+		echo $message;
+	}
 }
 
 function intmaint_get_message_body() {
