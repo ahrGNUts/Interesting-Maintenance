@@ -8,8 +8,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-
-if( strpos( $_SERVER['HTTP_REFERER'], '?page=interesting_maintenance') !== false ): ?>
+$url = home_url( add_query_arg( NULL, NULL ) );
+if( is_admin() && strpos( $url, '?page=interesting_maintenance_settings') !== false ): ?>
 
 <div id="help-modal" class="hidden" style="max-width:800px">
 	<dl>
