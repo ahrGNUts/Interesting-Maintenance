@@ -19,9 +19,9 @@ jQuery( document ).ready( function( $ ) {
 		// count number of rows
 		// if rows < 15 add new row
 		// else display some sort of tooltip error that you can only add 15 rows or however many
-		let row_count = $('#multi_fields_table > tbody tr').length - 1 ;
+		let row_count = $('#multi_fields_table > tbody tr').length;
 		
-		if(row_count == 14){
+		if(row_count == 15){
 			alert('table too long! [real text later]');
 			return;
 		}
