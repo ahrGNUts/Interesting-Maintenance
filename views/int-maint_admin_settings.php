@@ -98,7 +98,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 					<span id="sketch_help" class="dashicons dashicons-editor-help"></span>
 					<br>
 					<div id="multiple_fields" <?php echo intmaint_set_visibility( 'multiple' ); ?>>
-						<table>
+						<table id="multi_fields_table">
 							<thead>
 								<tr>
 									<th class="centered">Sketch ID</th>
@@ -107,18 +107,15 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 								</tr>
 							</thead>
 							<tbody>
+								<?php echo intmaint_init_multi_fields(); ?>
+							</tbody>
+							<tfoot>
 								<tr>
 									<td>
-										<input type="number" class="full_cell" name="multi_id_1" id="multi_id_1" minlength="5">
-									</td>
-									<td>
-										<input type="number" class="full_cell" name="multi_width_1" id="multi_width_1">
-									</td>
-									<td>
-										<input type="number" class="full_cell" name="multi_height_1" id="multi_height_1">
+										<input type="button" class="button-secondary" id="add_row" value="Add Row">
 									</td>
 								</tr>
-							</tbody>
+							</tfoot>
 						</table>
 					</div>
 				</td>

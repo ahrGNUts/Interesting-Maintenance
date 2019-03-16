@@ -15,3 +15,7 @@ td input.full_cell {
 .centered {
 	text-align: center !important;
 }
+
+.btn_delete {
+	cursor: pointer;
+}

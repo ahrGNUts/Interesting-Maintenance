@@ -80,3 +80,52 @@ function intmaint_set_visibility( $group ) {
 	}
 	return null;
 }
+
+/*
+	@return out -- string
+	
+	Generates as many rows in the multi table as there are associated OpenProcessing sketches.
+	Each row of the table will be serialized into its own record in the db.
+*/
+function intmaint_init_multi_fields() {
+	$multi_count = get_option( '_int-maint_multi_count' );
+	$out = '';
+	
+	if( $multi_count == 0 ) {
+		$out .= intmaint_output_multi_row( null );
+	} else {
+		for( $i = 0; $i < $multi_count; $i++ ) {
+			$data = unserialize( get_option( '_int-maint_multi_data_' ) );
+			$out .= intmaint_output_multi_row( $data );
+		}
+	}
+	
+	return $out;
+}
+
+/*
+	@param row_data -- array or null
+	
+	row_data expected to be null or an array of data built from unserializing multi sketch table row records from the database.
+	function will return markup for one row in the multi sketch table populated with data from the database (if any exists)
+*/ 
+function intmaint_output_multi_row( $row_data ) {
+	$out = '';
+	
+	$out .= '<tr>';
+	$out .= 	'<td>';
+	$out .= 		'<input type="number" class="full_cell" name="multi[][id]" minlength="5" value="' . $row_data['id'] . '">';
+	$out .= 	'</td>';
+	$out .= 	'<td>';
+	$out .= 		'<input type="number" class="full_cell" name="multi[][width]" value="' . $row_data['width'] . '">';
+	$out .= 	'</td>';
+	$out .= 	'<td>';
+	$out .= 		'<input type="number" class="full_cell" name="multi[][height]" value="' . $row_data['height'] . '">';
+	$out .= 	'</td>';
+	$out .= 	'<td>';
+	$out .= 		'<span class="dashicons dashicons-no btn_delete"></span>';
+	$out .= 	'</td>';
+	$out .= '</tr>';
+	
+	return $out;
+}
