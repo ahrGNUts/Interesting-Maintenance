@@ -194,7 +194,24 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 							update_option( '_int-maint_sketch_height', 0 );
 						}
 					} else if( $type == 'multiple' ){
-						// TODO
+						$index = 0;
+						
+						foreach( $_POST['multi'] as $row ) {
+							$write = array(
+								'id' => intval( $row['id'] ),
+								'width' => intval( $row['width'] ),
+								'height' => intval( $row['height'] )
+							);
+							
+							update_option( '_int-maint_multi_data_' . $index, serialize( $write ) );
+							$index++;
+						}
+						
+						update_option( '_int-maint_multi_count', $index );
+						
+						for( $i = $index + 1; $i < 15; $i++ ) {
+							delete_option( '_int-maint_multi_data_' . $i );
+						}
 					}
 					// TODO: more planning for random sketches
 					/*else if( $type === 'pop_random' ) {

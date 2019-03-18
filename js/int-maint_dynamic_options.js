@@ -3,7 +3,10 @@
 	@author Patrick Strube
 */
 jQuery( document ).ready( function( $ ) {
-	$btn_add_row = $('#add_row');
+	var $btn_add_row = $('#add_row');
+	let row_count = $('#multi_fields_table > tbody tr').length;
+	let row_idx = row_count;
+	
 	
 	$('#sketch_type').on('change', function() {
 		if($(this).val() != 'static'){
@@ -19,7 +22,7 @@ jQuery( document ).ready( function( $ ) {
 		// count number of rows
 		// if rows < 15 add new row
 		// else display some sort of tooltip error that you can only add 15 rows or however many
-		let row_count = $('#multi_fields_table > tbody tr').length;
+		row_count = $('#multi_fields_table > tbody tr').length;
 		
 		if(row_count == 15){
 			alert('table too long! [real text later]');
@@ -27,7 +30,7 @@ jQuery( document ).ready( function( $ ) {
 		}
 		
 		row_count++;
-		console.log(row_count);
+		row_idx++;
 		
 		$('#multi_fields_table').find('tbody')
 			.append($('<tr>')
@@ -35,7 +38,7 @@ jQuery( document ).ready( function( $ ) {
 					.append($('<input>')
 						.attr('type', 'number')
 						.attr('class', 'full_cell')
-						.attr('name', 'multi[][id]')
+						.attr('name', 'multi[' + row_idx + '][id]')
 						.attr('minlength', '5')
 					)
 				)
@@ -43,14 +46,14 @@ jQuery( document ).ready( function( $ ) {
 					.append($('<input>')
 						.attr('type', 'number')
 						.attr('class', 'full_cell')
-						.attr('name', 'multi[][width]')
+						.attr('name', 'multi[' + row_idx + '][width]')
 					)
 				)
 				.append($('<td>')
 					.append($('<input>')
 						.attr('type', 'number')
 						.attr('class', 'full_cell')
-						.attr('name', 'multi[][height]')
+						.attr('name', 'multi[' + row_idx + '][height]')
 					)	
 				)
 				.append($('<td>')

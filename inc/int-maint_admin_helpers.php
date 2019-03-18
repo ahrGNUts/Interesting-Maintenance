@@ -92,11 +92,11 @@ function intmaint_init_multi_fields() {
 	$out = '';
 	
 	if( $multi_count == 0 ) {
-		$out .= intmaint_output_multi_row( null );
+		$out .= intmaint_output_multi_row( null, 1 );
 	} else {
 		for( $i = 0; $i < $multi_count; $i++ ) {
-			$data = unserialize( get_option( '_int-maint_multi_data_' ) );
-			$out .= intmaint_output_multi_row( $data );
+			$data = unserialize( get_option( '_int-maint_multi_data_' . $i ) );
+			$out .= intmaint_output_multi_row( $data, $i );
 		}
 	}
 	
@@ -109,18 +109,18 @@ function intmaint_init_multi_fields() {
 	row_data expected to be null or an array of data built from unserializing multi sketch table row records from the database.
 	function will return markup for one row in the multi sketch table populated with data from the database (if any exists)
 */ 
-function intmaint_output_multi_row( $row_data ) {
+function intmaint_output_multi_row( $row_data, $idx ) {
 	$out = '';
 	
 	$out .= '<tr>';
 	$out .= 	'<td>';
-	$out .= 		'<input type="number" class="full_cell" name="multi[][id]" minlength="5" value="' . $row_data['id'] . '">';
+	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][id]" minlength="5" value="' . $row_data['id'] . '">';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
-	$out .= 		'<input type="number" class="full_cell" name="multi[][width]" value="' . $row_data['width'] . '">';
+	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][width]" value="' . $row_data['width'] . '">';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
-	$out .= 		'<input type="number" class="full_cell" name="multi[][height]" value="' . $row_data['height'] . '">';
+	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][height]" value="' . $row_data['height'] . '">';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
 	$out .= 		'<span class="dashicons dashicons-no btn_delete"></span>';
