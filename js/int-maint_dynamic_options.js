@@ -61,4 +61,12 @@ jQuery( document ).ready( function( $ ) {
 			)
 		;		
 	});
+	
+	$('#multi_fields_table').on('click', 'span.btn_delete', function(event) {
+		// this works to remove the row
+		// TODO: implement check to see if it's the only row.
+		// if only row, delete content in the inputs instead of removing the row
+		// else remove row
+		$(this).parent().parent().remove();
+	});
 });
