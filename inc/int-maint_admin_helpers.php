@@ -114,13 +114,13 @@ function intmaint_output_multi_row( $row_data, $idx ) {
 	
 	$out .= '<tr>';
 	$out .= 	'<td>';
-	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][id]" minlength="5" value="' . $row_data['id'] . '">';
+	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][id]" minlength="5" value="' . $row_data['id'] . '" required>';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
-	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][width]" value="' . $row_data['width'] . '">';
+	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][width]" value="' . $row_data['width'] . '" required>';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
-	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][height]" value="' . $row_data['height'] . '">';
+	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][height]" value="' . $row_data['height'] . '" required>';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
 	$out .= 		'<span class="dashicons dashicons-no btn_delete"></span>';
