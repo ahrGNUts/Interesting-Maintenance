@@ -21,7 +21,6 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			add_action( 'admin_menu', array( $this, 'admin_menu_item' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 			add_action( 'wp_handle_upload_prefilter', array( $this, 'prefilter_uploaded_files' ) );
-			add_action( 'admin_footer', array( $this, 'help_modal_content' ) );
 			add_action( 'admin_post_process_intmaint_options', array( $this, 'process_intmaint_options' ) );
 			
 			if( get_option( '_int-maint_site_status' ) != 1 ){
@@ -96,10 +95,6 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 			}
 
 			return $file;
-		}
-		
-		function help_modal_content() {
-			require( 'views/int-maint_help_modal.php' );
 		}
 		
 		function process_intmaint_options() {
