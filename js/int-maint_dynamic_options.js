@@ -7,6 +7,11 @@ jQuery( document ).ready( function( $ ) {
 	let row_count = $('#multi_fields_table > tbody tr').length;
 	let row_idx = row_count;
 	
+	changes_made = false;
+	$(window).on('beforeunload', function() {
+		if(changes_made)
+			return true;
+	});
 	
 	$('#sketch_type').on('change', function() {
 		if($(this).val() != 'static'){
@@ -16,6 +21,7 @@ jQuery( document ).ready( function( $ ) {
 			$('.static_fields').show();
 			$('.multiple_fields').hide();
 		}
+		changes_made = true;
 	});
 	
 	$btn_add_row.on('click', function() {
@@ -65,7 +71,8 @@ jQuery( document ).ready( function( $ ) {
 					)
 				)
 			)
-		;		
+		;
+		changes_made = true;	
 	});
 	
 	$('#multi_fields_table').on('click', 'span.btn_delete', function(event) {
@@ -75,12 +82,18 @@ jQuery( document ).ready( function( $ ) {
 			if(confirm("Are you sure you want to delete this row's contents?")){
 				$.each($('#multi_fields_table tbody tr td input'), function() {
 					$(this).val("");
+					changes_made = true;
 				});
 			}	
 		} else {
 			if(confirm("Are you sure you want to delete this row?")){
 				$(this).parent().parent().remove();
+				changes_made = true;
 			}
 		}
+	});
+	
+	$('input[type="text"], input[type="number"], textarea').on('input', function() {
+		changes_made = true;
 	});
 });
