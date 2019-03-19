@@ -2,7 +2,7 @@
 /*
 	Plugin Name: Interesting Maintenance
 	Description: Display a more interesting maintenance or coming soon page with OpenProcessing.org sketches
-	Version: 0.7
+	Version: 0.8
 	Author: Patrick Strube
 	Text Domain: int-maint
 	License: GPLv2
