@@ -69,10 +69,18 @@ jQuery( document ).ready( function( $ ) {
 	});
 	
 	$('#multi_fields_table').on('click', 'span.btn_delete', function(event) {
-		// this works to remove the row
-		// TODO: implement check to see if it's the only row.
-		// if only row, delete content in the inputs instead of removing the row
-		// else remove row
-		$(this).parent().parent().remove();
+		// TODO: something more aesthetically pleasing like a tooltip next to the delete button with anchors to confirm or stop the deletion
+		
+		if($('#multi_fields_table tbody tr').length <= 1) {
+			if(confirm("Are you sure you want to delete this row's contents?")){
+				$.each($('#multi_fields_table tbody tr td input'), function() {
+					$(this).val("");
+				});
+			}	
+		} else {
+			if(confirm("Are you sure you want to delete this row?")){
+				$(this).parent().parent().remove();
+			}
+		}
 	});
 });
