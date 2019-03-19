@@ -95,9 +95,8 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 					<select name="sketch_type" id="sketch_type">
 						<?php echo intmaint_build_select_options( 'sketch_type' ); ?>
 					</select>
-					<span id="sketch_help" class="dashicons dashicons-editor-help"></span>
-					<br>
-					<div id="multiple_fields" <?php echo intmaint_set_visibility( 'multiple' ); ?>>
+					<p class="description multiple_fields" <?php echo intmaint_set_visibility( 'multiple' ); ?>>Allows you to store the ID, width, and height of up to 15 sketches. When a user visits your site during downtime, one of the sketches you've chosen will be selected at random and rendered for the user. Visit <a href="https://openprocessing.org/browse">OpenProcessing.org</a> to find some cool sketches!</p>
+					<div class="multiple_fields" <?php echo intmaint_set_visibility( 'multiple' ); ?>>
 						<table id="multi_fields_table">
 							<thead>
 								<tr>

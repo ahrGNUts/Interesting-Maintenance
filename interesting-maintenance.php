@@ -60,10 +60,6 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 				wp_enqueue_script( 'int-maint_uploader', INTMAINT_PLUGIN_URL . 'js/int-maint_upload.js', array( 'jquery' ) );
 				wp_enqueue_media();
 				
-				// for help modal
-				wp_enqueue_script( 'int-maint_help_modal', INTMAINT_PLUGIN_URL . 'js/int-maint_help_modal.js', array( 'jquery-ui-core', 'jquery-ui-dialog' ) );
-				wp_enqueue_style( 'wp-jquery-ui-dialog' );
-				
 				// character counter
 				wp_enqueue_script( 'int-maint_char_counter', INTMAINT_PLUGIN_URL . 'js/int-maint_char_count.js', array( 'jquery' ) );
 				
