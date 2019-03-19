@@ -7,26 +7,6 @@
 */
 defined( 'ABSPATH' ) || exit;
 
-function intmaint_build_sketch_url() {
-	$base_url = 'https://openprocessing.org/sketch/';
-	$type = get_option( '_int-maint_sketch_type' );
-	
-	switch( $type ){
-		case 'static':
-			return $base_url . get_option( '_int-maint_sketch_id' ) . '/embed';
-			break;
-		case 'pop_random':
-			//TODO
-			break;
-		case 'random':
-			//TODO
-			break;
-		default:
-			return 'https://openprocessing.org';
-			break;
-	}
-}
-
 function intmaint_get_message_heading() {
 	$message = get_option( '_int-maint_message_heading' );
 	
@@ -53,12 +33,35 @@ function intmaint_echo_styles_scripts() {
 	echo '<script href="' . INTMAINT_PLUGIN_URL . 'template/js/bootstrap.min.js"></script>' . "\n";
 }
 
-function intmaint_get_sketch_height() {
-	echo get_option( '_int-maint_sketch_height' );
-}
-
-function intmaint_get_sketch_width() {
-	echo get_option( '_int-maint_sketch_width' );
+function intmaint_build_sketch_iframe() {
+	$base_url = 'https://www.openprocessing.org/sketch/';
+	$type = get_option( '_int-maint_sketch_type' );
+	
+	switch( $type ){
+		case 'static':
+			$data = array(
+				'id' => get_option( '_int-maint_sketch_id' ),
+				'width' => get_option( '_int-maint_sketch_width' ),
+				'height' => get_option( '_int-maint_sketch_height' )
+			);
+			break;
+		case 'multiple':
+			$key = '_int-maint_multi_data_' . rand( 0, get_option( '_int-maint_multi_count' ) - 1 );
+			$data = unserialize( get_option( $key ) );
+			break;
+		/*
+		case 'pop_random':
+			//TODO
+			break;
+		case 'random':
+			//TODO
+			break;
+		*/
+		default:
+			break;
+	}
+	
+	echo '<iframe id="op_frame" src="' . $base_url . $data['id'] . '/embed/" width="' . $data['width'] . '" height="' . $data['height'] . '">';
 }
 
 function intmaint_get_logo_path() {

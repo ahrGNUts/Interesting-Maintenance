@@ -28,7 +28,7 @@ require( 'int-maint_template_functions.php' ); ?>
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<iframe id="op_frame" src="<?php echo intmaint_build_sketch_url(); ?>" width="<?php intmaint_get_sketch_width(); ?>" height="<?php intmaint_get_sketch_height(); ?>">
+					<?php intmaint_build_sketch_iframe(); ?>
 				</div>
 			</div>
 		</div>
