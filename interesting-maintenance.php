@@ -14,6 +14,8 @@ define( 'INTMAINT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'INTMAINT_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 
 if( !class_exists( 'Interesting_Maintenance' ) ){
+	register_uninstall_hook( __FILE__, array( 'Interesting_Maintenance', 'on_uninstall' ) );
+	
 	final class Interesting_Maintenance {
 		private static $instance = null;
 		
@@ -230,7 +232,51 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	        }
 	
 	        return $access;
-    	}
+    		}
+    		
+    		function on_uninstall() {
+	    		// security checks
+	    		if( !current_user_can( 'activate_plugins' ) )
+	    			return;
+	    		check_admin_referer( 'bulk-plugins' );
+	    		
+	    		if ( __FILE__ != WP_UNINSTALL_PLUGIN )
+				return;
+	    		
+	    		$keys = array(
+		    		'_int-maint_site_status',
+		    		'_int-maint_site_logo_id',
+		    		'_int-maint_site_logo_path',
+		    		'_int-maint_message_heading',
+		    		'_int-maint_message_body',
+		    		'_int-maint_seo_title',
+		    		'_int-maint_seo_desc',
+		    		'_int-maint_sketch_id',
+		    		'_int-maint_sketch_width',
+		    		'_int-maint_sketch_height',
+		    		'_int-maint_multi_count',
+		    		'_int-maint_multi_data_0'
+		    		'_int-maint_multi_data_1'
+		    		'_int-maint_multi_data_2'
+		    		'_int-maint_multi_data_3'
+		    		'_int-maint_multi_data_4'
+		    		'_int-maint_multi_data_5'
+		    		'_int-maint_multi_data_6'
+		    		'_int-maint_multi_data_7'
+		    		'_int-maint_multi_data_8'
+		    		'_int-maint_multi_data_9'
+		    		'_int-maint_multi_data_10'
+		    		'_int-maint_multi_data_11'
+		    		'_int-maint_multi_data_12'
+		    		'_int-maint_multi_data_13'
+		    		'_int-maint_multi_data_14'
+	    		);
+	    		
+	    		// cleaning up site options
+	    		foreach( $keys as $key ){
+		    		delete_option( $key );
+	    		}
+    		}
 		
 		/**
 		 * Return class instance.
