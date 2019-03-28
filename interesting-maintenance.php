@@ -234,7 +234,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	        return $access;
     		}
     		
-    		function on_uninstall() {
+    		public static function on_uninstall() {
 	    		// security checks
 	    		if( !current_user_can( 'activate_plugins' ) )
 	    			return;
