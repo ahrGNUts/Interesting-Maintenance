@@ -239,8 +239,6 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	    		if( !current_user_can( 'activate_plugins' ) )
 	    			return;
 	    		
-	    		check_admin_referer( 'bulk-plugins' );
-	    		
 	    		$keys = array(
 		    		'site_status',
 		    		'site_logo_id',
