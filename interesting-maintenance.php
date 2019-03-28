@@ -241,9 +241,6 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	    		
 	    		check_admin_referer( 'bulk-plugins' );
 	    		
-	    		if ( __FILE__ != WP_UNINSTALL_PLUGIN )
-				return;
-	    		
 	    		$keys = array(
 		    		'site_status',
 		    		'site_logo_id',
