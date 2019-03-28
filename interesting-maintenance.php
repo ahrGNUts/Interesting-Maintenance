@@ -247,6 +247,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		    		'message_body',
 		    		'seo_title',
 		    		'seo_desc',
+		    		'sketch_type',
 		    		'sketch_id',
 		    		'sketch_width',
 		    		'sketch_height',
