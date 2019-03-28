@@ -245,37 +245,37 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 				return;
 	    		
 	    		$keys = array(
-		    		'_int-maint_site_status',
-		    		'_int-maint_site_logo_id',
-		    		'_int-maint_site_logo_path',
-		    		'_int-maint_message_heading',
-		    		'_int-maint_message_body',
-		    		'_int-maint_seo_title',
-		    		'_int-maint_seo_desc',
-		    		'_int-maint_sketch_id',
-		    		'_int-maint_sketch_width',
-		    		'_int-maint_sketch_height',
-		    		'_int-maint_multi_count',
-		    		'_int-maint_multi_data_0',
-		    		'_int-maint_multi_data_1',
-		    		'_int-maint_multi_data_2',
-		    		'_int-maint_multi_data_3',
-		    		'_int-maint_multi_data_4',
-		    		'_int-maint_multi_data_5',
-		    		'_int-maint_multi_data_6',
-		    		'_int-maint_multi_data_7',
-		    		'_int-maint_multi_data_8',
-		    		'_int-maint_multi_data_9',
-		    		'_int-maint_multi_data_10',
-		    		'_int-maint_multi_data_11',
-		    		'_int-maint_multi_data_12',
-		    		'_int-maint_multi_data_13',
-		    		'_int-maint_multi_data_14'
+		    		'site_status',
+		    		'site_logo_id',
+		    		'site_logo_path',
+		    		'message_heading',
+		    		'message_body',
+		    		'seo_title',
+		    		'seo_desc',
+		    		'sketch_id',
+		    		'sketch_width',
+		    		'sketch_height',
+		    		'multi_count',
+		    		'multi_data_0',
+		    		'multi_data_1',
+		    		'multi_data_2',
+		    		'multi_data_3',
+		    		'multi_data_4',
+		    		'multi_data_5',
+		    		'multi_data_6',
+		    		'multi_data_7',
+		    		'multi_data_8',
+		    		'multi_data_9',
+		    		'multi_data_10',
+		    		'multi_data_11',
+		    		'multi_data_12',
+		    		'multi_data_13',
+		    		'multi_data_14'
 	    		);
 	    		
 	    		// cleaning up site options
 	    		foreach( $keys as $key ){
-		    		delete_option( $key );
+		    		delete_option( '_int-maint_' . $key );
 	    		}
     		}
 		
