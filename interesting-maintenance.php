@@ -15,6 +15,7 @@ define( 'INTMAINT_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 
 if( !class_exists( 'Interesting_Maintenance' ) ){
 	register_uninstall_hook( __FILE__, array( 'Interesting_Maintenance', 'on_uninstall' ) );
+	register_activation_hook( __FILE__, array( 'Interesting_Maintenance', 'on_activate' ) );
 	
 	final class Interesting_Maintenance {
 		private static $instance = null;
@@ -273,6 +274,17 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	    		foreach( $keys as $key ){
 		    		delete_option( '_int-maint_' . $key );
 	    		}
+    		}
+    		
+    		public static function on_activate() {
+	    		if( !current_user_can( 'activate_plugins' ) )
+	    			return;
+	    			
+	    		if( empty( get_option( '_int-maint_site_status' ) ) )
+		    		update_option( '_int-maint_site_status', 1 );
+		    		
+	    		if( empty( get_option( '_int-maint_sketch_type' ) ) )
+		    		update_option( '_int-maint_sketch_type', 'static' );
     		}
 		
 		/**
