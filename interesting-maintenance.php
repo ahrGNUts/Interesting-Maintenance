@@ -238,6 +238,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	    		// security checks
 	    		if( !current_user_can( 'activate_plugins' ) )
 	    			return;
+	    		
 	    		check_admin_referer( 'bulk-plugins' );
 	    		
 	    		if ( __FILE__ != WP_UNINSTALL_PLUGIN )
@@ -255,20 +256,20 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 		    		'_int-maint_sketch_width',
 		    		'_int-maint_sketch_height',
 		    		'_int-maint_multi_count',
-		    		'_int-maint_multi_data_0'
-		    		'_int-maint_multi_data_1'
-		    		'_int-maint_multi_data_2'
-		    		'_int-maint_multi_data_3'
-		    		'_int-maint_multi_data_4'
-		    		'_int-maint_multi_data_5'
-		    		'_int-maint_multi_data_6'
-		    		'_int-maint_multi_data_7'
-		    		'_int-maint_multi_data_8'
-		    		'_int-maint_multi_data_9'
-		    		'_int-maint_multi_data_10'
-		    		'_int-maint_multi_data_11'
-		    		'_int-maint_multi_data_12'
-		    		'_int-maint_multi_data_13'
+		    		'_int-maint_multi_data_0',
+		    		'_int-maint_multi_data_1',
+		    		'_int-maint_multi_data_2',
+		    		'_int-maint_multi_data_3',
+		    		'_int-maint_multi_data_4',
+		    		'_int-maint_multi_data_5',
+		    		'_int-maint_multi_data_6',
+		    		'_int-maint_multi_data_7',
+		    		'_int-maint_multi_data_8',
+		    		'_int-maint_multi_data_9',
+		    		'_int-maint_multi_data_10',
+		    		'_int-maint_multi_data_11',
+		    		'_int-maint_multi_data_12',
+		    		'_int-maint_multi_data_13',
 		    		'_int-maint_multi_data_14'
 	    		);
 	    		
