@@ -233,59 +233,59 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 	        }
 	
 	        return $access;
-    		}
+    	}
     		
-    		public static function on_uninstall() {
-	    		// security checks
-	    		if( !current_user_can( 'activate_plugins' ) )
-	    			return;
-	    		
-	    		$keys = array(
-		    		'site_status',
-		    		'site_logo_id',
-		    		'site_logo_path',
-		    		'message_heading',
-		    		'message_body',
-		    		'seo_title',
-		    		'seo_desc',
-		    		'sketch_type',
-		    		'sketch_id',
-		    		'sketch_width',
-		    		'sketch_height',
-		    		'multi_count',
-		    		'multi_data_0',
-		    		'multi_data_1',
-		    		'multi_data_2',
-		    		'multi_data_3',
-		    		'multi_data_4',
-		    		'multi_data_5',
-		    		'multi_data_6',
-		    		'multi_data_7',
-		    		'multi_data_8',
-		    		'multi_data_9',
-		    		'multi_data_10',
-		    		'multi_data_11',
-		    		'multi_data_12',
-		    		'multi_data_13',
-		    		'multi_data_14'
-	    		);
-	    		
-	    		// cleaning up site options
-	    		foreach( $keys as $key ){
-		    		delete_option( '_int-maint_' . $key );
-	    		}
-    		}
+		public static function on_uninstall() {
+    		// security check
+    		if( !current_user_can( 'activate_plugins' ) )
+    			return;
     		
-    		public static function on_activate() {
-	    		if( !current_user_can( 'activate_plugins' ) )
-	    			return;
-	    			
-	    		if( empty( get_option( '_int-maint_site_status' ) ) )
-		    		update_option( '_int-maint_site_status', 1 );
-		    		
-	    		if( empty( get_option( '_int-maint_sketch_type' ) ) )
-		    		update_option( '_int-maint_sketch_type', 'static' );
+    		$keys = array(
+	    		'site_status',
+	    		'site_logo_id',
+	    		'site_logo_path',
+	    		'message_heading',
+	    		'message_body',
+	    		'seo_title',
+	    		'seo_desc',
+	    		'sketch_type',
+	    		'sketch_id',
+	    		'sketch_width',
+	    		'sketch_height',
+	    		'multi_count',
+	    		'multi_data_0',
+	    		'multi_data_1',
+	    		'multi_data_2',
+	    		'multi_data_3',
+	    		'multi_data_4',
+	    		'multi_data_5',
+	    		'multi_data_6',
+	    		'multi_data_7',
+	    		'multi_data_8',
+	    		'multi_data_9',
+	    		'multi_data_10',
+	    		'multi_data_11',
+	    		'multi_data_12',
+	    		'multi_data_13',
+	    		'multi_data_14'
+    		);
+    		
+    		// cleaning up site options
+    		foreach( $keys as $key ){
+	    		delete_option( '_int-maint_' . $key );
     		}
+		}
+		
+		public static function on_activate() {
+    		if( !current_user_can( 'activate_plugins' ) )
+    			return;
+    			
+    		if( empty( get_option( '_int-maint_site_status' ) ) )
+	    		update_option( '_int-maint_site_status', 1 );
+	    		
+    		if( empty( get_option( '_int-maint_sketch_type' ) ) )
+	    		update_option( '_int-maint_sketch_type', 'static' );
+		}
 		
 		/**
 		 * Return class instance.
