@@ -191,14 +191,16 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 						$index = 0;
 						
 						foreach( $_POST['multi'] as $row ) {
-							$write = array(
-								'id' => intval( $row['id'] ),
-								'width' => intval( $row['width'] ),
-								'height' => intval( $row['height'] )
-							);
+							if( !empty( $row['id']) && !empty( $row['width'] ) && !empty( ['height'] ) ) {
+								$write = array(
+									'id' => intval( $row['id'] ),
+									'width' => intval( $row['width'] ),
+									'height' => intval( $row['height'] )
+								);
 							
-							update_option( '_int-maint_multi_data_' . $index, serialize( $write ) );
-							$index++;
+								update_option( '_int-maint_multi_data_' . $index, serialize( $write ) );
+								$index++;
+							}
 						}
 						
 						update_option( '_int-maint_multi_count', $index );
