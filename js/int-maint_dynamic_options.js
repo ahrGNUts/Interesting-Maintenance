@@ -72,6 +72,7 @@ jQuery( document ).ready( function( $ ) {
 				.append($('<td>')
 					.append($('<span>')
 						.attr('class', 'dashicons dashicons-no btn_delete')
+						.attr('title', 'Delete')
 					)
 				)
 			)

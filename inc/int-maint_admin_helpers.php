@@ -123,7 +123,7 @@ function intmaint_output_multi_row( $row_data, $idx ) {
 	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][height]" value="' . $row_data['height'] . '" required>';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
-	$out .= 		'<span class="dashicons dashicons-no btn_delete"></span>';
+	$out .= 		'<span class="dashicons dashicons-no btn_delete" title="Delete"></span>';
 	$out .= 	'</td>';
 	$out .= '</tr>';
 	
