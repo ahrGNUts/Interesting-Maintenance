@@ -205,7 +205,7 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 						
 						update_option( '_int-maint_multi_count', $index );
 						
-						for( $i = $index + 1; $i < 15; $i++ ) {
+						for( $i = $index; $i < 15; $i++ ) {
 							delete_option( '_int-maint_multi_data_' . $i );
 						}
 					}
