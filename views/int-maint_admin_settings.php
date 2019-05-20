@@ -147,7 +147,7 @@ if( is_admin() && current_user_can( 'manage_options' ) ):
 				</td>
 			</tr>
 		</table>
-		<button type="submit" name="submit" value="Save Changes" class="button button-primary">Save Changes</button>
+		<button type="submit" name="submit" id="submit" value="Save Changes" class="button button-primary">Save Changes</button>
 	</form>
 </div>
 	

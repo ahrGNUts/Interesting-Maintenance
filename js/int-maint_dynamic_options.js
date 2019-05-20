@@ -100,4 +100,8 @@ jQuery( document ).ready( function( $ ) {
 	$('input[type="text"], input[type="number"], textarea').on('input', function() {
 		changes_made = true;
 	});
+	
+	$('#submit').on('click', function() {
+		changes_made = false;
+	});
 });
