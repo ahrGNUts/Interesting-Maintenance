@@ -17,9 +17,13 @@ jQuery( document ).ready( function( $ ) {
 		if($(this).val() != 'static'){
 			$('.static_fields').hide();
 			$('.multiple_fields').show();
+			$('.multiple_fields tr td input').prop('disabled', false);
+			$('#add_row').prop('disabled', false);
 		} else {
 			$('.static_fields').show();
 			$('.multiple_fields').hide();
+			$('.multiple_fields tr td input').prop('disabled', true);
+			$('#add_row').prop('disabled', true);
 		}
 		changes_made = true;
 	});
