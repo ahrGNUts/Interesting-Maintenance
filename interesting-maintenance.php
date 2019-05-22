@@ -2,7 +2,7 @@
 /*
 	Plugin Name: Interesting Maintenance
 	Description: Display a more interesting maintenance or coming soon page with OpenProcessing.org sketches
-	Version: 0.8
+	Version: 0.9
 	Author: Patrick Strube
 	Text Domain: int-maint
 	License: GPLv2
@@ -67,6 +67,10 @@ if( !class_exists( 'Interesting_Maintenance' ) ){
 				
 				// dynamic page behavior
 				wp_enqueue_script( 'int-maint_dynamic_options', INTMAINT_PLUGIN_URL . 'js/int-maint_dynamic_options.js', array( 'jquery' ) );
+				
+				// tooltips
+				wp_enqueue_script( 'int-maint_popper', INTMAINT_PLUGIN_URL . 'js/popper.min.js' );
+				wp_enqueue_script( 'int-maint_tooltips', INTMAINT_PLUGIN_URL . 'js/bootstrap.min.js', array( 'int-maint_popper' ) );
 			}	
 		}
 		

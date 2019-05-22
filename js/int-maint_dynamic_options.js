@@ -6,6 +6,16 @@ jQuery( document ).ready( function( $ ) {
 	var $btn_add_row = $('#add_row');
 	let row_count = $('#multi_fields_table > tbody tr').length;
 	let row_idx = row_count;
+	let $tooltip_context;
+	let tooltip_visible = false;
+	
+	const template = '<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>';
+	
+	let options = {
+		template: template
+	}
+	
+	$('[data-toggle="tooltip"]').tooltip(options);
 	
 	changes_made = false;
 	$(window).on('beforeunload', function() {
@@ -72,7 +82,12 @@ jQuery( document ).ready( function( $ ) {
 				.append($('<td>')
 					.append($('<span>')
 						.attr('class', 'dashicons dashicons-no btn_delete')
-						.attr('title', 'Delete')
+						.attr('title', 'Delete row? <a class=\'row-link delete-row-confirm\'>Confirm</a> | <a class=\'row-link delete-row-cancel\'>Cancel</a>')
+						.attr('data-index', row_idx)
+						.attr('data-toggle', 'tooltip')
+						.attr('data-trigger', 'manual')
+						.attr('data-placement', 'right')
+						.attr('data-html', 'true')
 					)
 				)
 			)
@@ -80,22 +95,32 @@ jQuery( document ).ready( function( $ ) {
 		changes_made = true;	
 	});
 	
-	$('#multi_fields_table').on('click', 'span.btn_delete', function(event) {
-		// TODO: something more aesthetically pleasing like a tooltip next to the delete button with anchors to confirm or stop the deletion
+	$('body').on('click', function(e) {
+		if(!e.target.className.includes("dashicons-no btn_delete")){
+			hide_tooltips();
+		}
+	});
+	
+	$('body').on('click', '.tooltip-inner .delete-row-confirm', function() {
+		hide_tooltips();
 		
 		if($('#multi_fields_table tbody tr').length <= 1) {
-			if(confirm("Are you sure you want to delete this row's contents?")){
-				$.each($('#multi_fields_table tbody tr td input'), function() {
-					$(this).val("");
-					changes_made = true;
-				});
-			}	
+			$.each($('#multi_fields_table tbody tr td input'), function() {
+				$(this).val("");
+			});
 		} else {
-			if(confirm("Are you sure you want to delete this row?")){
-				$(this).parent().parent().remove();
-				changes_made = true;
-			}
+			$tooltip_context.remove();
 		}
+		changes_made = true;
+	});
+	
+	$('#multi_fields_table').on('click', 'span.btn_delete', function(event) {
+		if(tooltip_visible){
+			hide_tooltips();
+		}
+		$(this).tooltip('show');
+		$tooltip_context = $(this).parent().parent();
+		tooltip_visible = true;
 	});
 	
 	$('input[type="text"], input[type="number"], textarea').on('input', function() {
@@ -105,4 +130,9 @@ jQuery( document ).ready( function( $ ) {
 	$('#submit').on('click', function() {
 		changes_made = false;
 	});
+	
+	function hide_tooltips() {
+		$('[data-toggle="tooltip"]').tooltip('hide');
+		tooltip_visible = false;
+	}
 });

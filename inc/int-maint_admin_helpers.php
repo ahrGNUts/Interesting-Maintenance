@@ -111,6 +111,7 @@ function intmaint_init_multi_fields() {
 */ 
 function intmaint_output_multi_row( $row_data, $idx ) {
 	$out = '';
+	$tip_title = "Delete row? <a class='row-link delete-row-confirm'>Confirm</a> | <a class='row-link delete-row-cancel'>Cancel</a>";
 	
 	$out .= '<tr>';
 	$out .= 	'<td>';
@@ -123,7 +124,7 @@ function intmaint_output_multi_row( $row_data, $idx ) {
 	$out .= 		'<input type="number" class="full_cell" name="multi[' . $idx . '][height]" value="' . $row_data['height'] . '" required>';
 	$out .= 	'</td>';
 	$out .= 	'<td>';
-	$out .= 		'<span class="dashicons dashicons-no btn_delete" title="Delete"></span>';
+	$out .= 		'<span class="dashicons dashicons-no btn_delete" title="' . $tip_title . '" data-index="' . $idx . '" data-toggle="tooltip" data-trigger="manual" data-placement="right" data-html="true"></span>';
 	$out .= 	'</td>';
 	$out .= '</tr>';
 	
